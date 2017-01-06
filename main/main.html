@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="description" content="Find movie是集影院搜索、电影资讯、发表影评于一体的网站，带给你最好的体验">
+    <meta name="author" content="Quincy Wu">
+    <title>Find movie - 关于我们————一段永不散场的电影之旅</title>
+    <link rel="stylesheet" href="../common/css/normalize.css"/>
+    <link rel="stylesheet" href="../common/css/bootstrap.min.css"/>
+    <!--<link rel="stylesheet" href="common/css/animate.min.css"/>-->
+    <link rel="stylesheet" href="../fontello/css/fontello.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <!--[if lte IE 9]>
+    <script src="../common/js/html5shiv.min.js"></script>
+    <script src="../common/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header>
+    <nav class="navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navlist"
+                        aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Find Movies</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navlist">
+                <ul class="nav navbar-nav">
+                    <li><a href="../admin/index.html"><span class="ficon icon-globe"></span> 地图搜索</a></li>
+                    <li><a href="../movies/movies.html"><span class="ficon icon-video"></span> 热映电影</a></li>
+                    <li><a id="collect"><span class="ficon icon-heart"></span>我的收藏</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-user">
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="ficon icon-user"></span> <span id="fm_name"></span><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a id="logout"><span class="ficon icon-logout"></span> 退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-login">
+                    <li><a data-toggle="modal" data-target="#loginModel"><span class="ficon icon-login"></span> 登录</a></li>
+                    <li><a href="../register/register.html"><span class="ficon icon-user-plus"></span> 注册</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="cover-content">
+    <div id="carousel" class="carousel slide col-sm-12 col-xm-12 col-md-12" data-ride="carousel" data-interval="3000">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="img/carousel1.jpg" alt="...">
+            </div>
+            <div class="item">
+                <img src="img/carousel1.jpg" alt="...">
+            </div>
+            <div class="item">
+                <img src="img/carousel1.jpg" alt="...">
+            </div>
+        </div>
+        <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row introduce">
+        <div class="col-lg-4 intro-div">
+            <img src="img/film.png" class="intro-img animated">
+            <div class="intro-text animated texthide">
+                <h2>影院搜索</h2>
+                <p>这里提供了城市周边影院查询功能，您可以在地图上找到您想去的电影院，选择您的出行方式并查询线路，还可以搜索周边美食、卡拉OK……让生活high起来！</p>
+                <a class="btn btn-success" href="../admin/index.html">走起！</a>
+            </div>
+        </div>
+        <div class="col-lg-4 intro-div">
+            <img src="img/board.png" class="intro-img animated">
+            <div class="intro-text animated texthide">
+                <h2>电影资讯</h2>
+                <p>在这里您可以查看最新的电影资讯，各种精彩影片不容错过！还在犹豫什么，挑一部电影，和你的亲朋好友一起欣赏吧！</p>
+                <a class="btn btn-success" href="../movies/movies.html">去看看~</a>
+            </div>
+        </div>
+        <div class="col-lg-4 intro-div">
+            <img src="img/speaker.png" class="intro-img animated">
+            <div class="intro-text animated texthide">
+                <h2>个人中心</h2>
+                <p>在这里您还可以登录个人帐号，收藏自己喜欢的电影和影院，设置自己喜欢的地图风格，创造属于自己的电影空间！</p>
+                <a class="btn btn-success">赞一个。。</a>
+            </div>
+        </div>
+    </div>
+    <div class="mainbody">
+        <div id="part1" class="row parts">
+            <div id="popcornpic" class="col-md-6">
+                <img src="img/popcorn.jpg" class="imgs animated">
+            </div>
+            <div id="p1" class="col-md-6 bodytext animated texthide">
+                <p class="text-center text">那些年一起看电影时买的爆米花</p>
+                <p class="text-center text">放到保鲜袋里干燥保存</p>
+                <p class="text-center text">两天过期</p>
+            </div>
+        </div>
+        <div id="part2" class="row parts">
+            <div id="p2" class="col-md-6 bodytext animated texthide">
+                <p class="text-center text">那些年一起看电影时买的电影票</p>
+                <p class="text-center text">一张张收集起来</p>
+                <p class="text-center text">两个星期淡化</p>
+            </div>
+            <div id="ticketpic" class="col-md-6">
+                <img src="img/ticket.jpg" class="imgs animated">
+            </div>
+        </div>
+        <div id="part3" class="row parts">
+            <div id="row3">
+                <div id="friendpic" class="col-md-6">
+                    <img src="img/friends.jpg" class="imgs animated">
+                </div>
+                <div id="p3" class="col-md-6 bodytext animated texthide">
+                    <p class="text-center text">那些年一起看电影的那些人</p>
+                    <p class="text-center text">一起制造的回忆</p>
+                    <p class="text-center text">能维持多久呢。。。</p>
+                </div>
+            </div>
+        </div>
+        <a href="../admin/index.html" class="opentrip">
+            <span class="line line-top"></span>
+            <span class="line line-left"></span>
+            <span class="line line-right"></span>
+            <span class="line line-bottom"></span>
+            开启电影之旅
+        </a>
+    </div>
+
+</div>
+<footer class="container-fluid">
+    <div class="row">
+        <div class="footerdiv col-md-3 col-md-offset-1">
+            <h4>关于</h4>
+            <p>Find Movie是一个专注于影院搜索和影讯更新，服务于大众的平台。</p>
+        </div>
+        <div class="footerdiv col-md-2 col-md-offset-1">
+            <h4>友情链接</h4>
+            <ul>
+                <li><a href="http://www.mtime.com/" rel="prefetch prerender">时光网</a></li>
+                <li><a href="http://www.siteinspire.com/" rel="prefetch prerender">siteInspire</a></li>
+                <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+                <li><a href="http://jquery.com/">JQuery</a></li>
+                <li><a href="http://developer.baidu.com/map/index.php?title=%E9%A6%96%E9%A1%B5">百度地图API</a></li>
+            </ul>
+        </div>
+        <div class="footerdiv col-md-4 col-md-offset-1">
+            <h4>联系我</h4>
+            <ul class="contact">
+                <li><a href="http://weibo.com/3100732047/profile?topnav=1&wvr=6" class="weibo"><span class="ficon icon-weibo"></span></a></li>
+                <li><a id="weixin"><span class="ficon icon-wechat"></span></a></li>
+                <li><a id="qq"><span class="ficon icon-qq"></span></a></li>
+                <li><a id="fb"><span class="ficon icon-facebook"></span></a></li>
+                <li><a id="twitter"><span class="ficon icon-twitter"></span></a></li>
+            </ul>
+            <div class="weixinwer erweima" id="weixiner"><img src="../common/img/weixiner.jpg" class="erweimaimg"></div>
+            <div class="qqer erweima" id="qqer"><img src="../common/img/qqer.jpg" class="erweimaimg"></div>
+        </div>
+    </div>
+</footer>
+<div class="modal fade" id="loginModel" tabindex="-1" role="dialog" aria-labelledby="loginModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">用户登录</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control input-login" id="username" placeholder="Username" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control input-login" id="password" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-9">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="remember">7天内免登录
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="form-group">
+                        <div class="col-sm-offset-8 col-sm-4">
+                            <a id="login" class="btn btn-success">登录</a>
+                            <a class="btn btn-primary" href="../register/register.html" >注册</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="../common/js/jquery-1.11.3.min.js"></script>
+<script src="../common/js/bootstrap.min.js"></script>
+<!--[if lte IE 9]>
+<script src="../common/js/jquery.placeholder.min.js"></script>
+<script>
+    $(function () {
+        $('input, textarea').placeholder();
+    });
+</script>
+<![endif]-->
+<script src="../layer/layer.js"></script>
+<script src="../common/js/common.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

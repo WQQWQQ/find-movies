@@ -1,0 +1,220 @@
+html{
+    height: 100%;
+}
+body {
+    font-family: "Microsoft YaHei", sans-serif, "Helvetica Neue", Helvetica, Arial;
+    background-color: #ffffff;
+    height: 100%;
+
+}
+a:link,a:visited,a:hover,a:active{
+    text-decoration: none;
+    cursor: pointer;
+}
+ul{
+    list-style: none;
+}
+
+/*loading start*/
+.loading{
+    position: absolute;
+    background-color: #dee1e2;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+}
+.loading img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -400px;
+}
+/*loading end*/
+
+/*topsearch start*/
+#topsearch{
+    width: 100%;
+    position: relative;
+    background-color: #f0f0f0;
+    z-index: 10;
+    height: 110px;
+}
+/*topbar start*/
+.topbar{
+    height: 110px;
+    width: 100%;
+
+}
+.searchcon{
+    width: 60%;
+    margin: 0 auto;
+    padding: 30px;
+}
+.searchcon>.input-group{
+    padding: 5px;
+    border: 2px solid #cccccc;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    position: relative;
+    -webkit-box-shadow: inset 0 1px 5px #cccccc;
+    -moz-box-shadow: inset 0 1px 5px #cccccc;
+    box-shadow: inset 0 1px 5px #cccccc;
+    background-color: #ffffff;
+}
+
+.searchcon>.input-group .dropdown-menu{
+    min-width:0;
+    margin-top: 5px;
+    z-index: 9997;
+    position: absolute;
+}
+.searchcon a,.searchcon input{
+    border: none;
+    outline: none;
+}
+.searchcon a:active,.searchcon a:visited{
+    border: none;
+    outline: none;
+}
+
+.searchcon input{
+    width: 100%;
+    padding: 5px;
+}
+.searchcon input:focus{
+    outline: none;
+}
+#search{
+    position: absolute;
+    right: 10px;
+    top:8px;
+    font-size: 16px;
+}
+/*topbar end*/
+/*topsearch end*/
+
+
+/*resultdiv start*/
+.resultdiv{
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+/*resulttop start*/
+
+.resulttop{
+    border-bottom: 2px solid #cccccc;
+    border-left:10px solid #e89e2d;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.resulttop span{
+    font-weight: bold;
+    font-size: 1.2em;
+}
+/*resulttop end*/
+
+/*resultcontainer start*/
+#panelproto{
+    display: none;
+}
+.cinemaname{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.panel{
+    margin-bottom: 50px;
+}
+.resultcontainer .panel-heading .ficon{
+    float: right;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+.resultcontainer .panel-heading .ficon:hover{
+    color: #ff334e;
+}
+.cinema_rating{
+    color: #de534a;
+}
+.moviedate{
+    font-weight: bold;
+}
+.love_cinema{
+    color: #ff334e;
+}
+/*resultcontainer end*/
+
+/*pagerdiv start*/
+.pager>li{
+    cursor: pointer;
+}
+
+
+/*footer start*/
+footer{
+    background-color: #101010;
+    color: #ffffff;
+    position: relative;
+    font-family: cursive,"Microsoft YaHei", sans-serif,"Helvetica Neue",Helvetica,Arial;
+    text-align: center;
+}
+.footerdiv{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.footerdiv ul{
+    padding-left: 0;
+}
+
+.contact li{
+    display: inline-block;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin: 10px;
+}
+.contact li a{
+    display: block;
+    width: 40px;
+    height: 40px;
+    -webkit-border-radius: 50% ;
+    -moz-border-radius:  50%;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    line-height: 50px\9;
+    *line-height: 40px;
+    _line-height: 40px;
+
+}
+.contact .ficon{
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    color: #4296ff;
+    font-size: 20px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.contact li:hover .ficon{
+    background-color: #4296ff;
+    color: #ffffff;
+}
+.erweima{
+    position: absolute;
+    display: none;
+    top: 50px;
+    right: 100px;
+}
+.erweimaimg{
+    width: 100px;
+    height: 100px;
+}
+/*footer end*/

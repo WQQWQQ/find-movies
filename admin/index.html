@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="description" content="Find movie是集影院搜索、电影资讯、发表影评于一体的网站，带给你最好的体验">
+    <meta name="author" content="Quincy Wu">
+    <title>Dashboard - SB Admin</title>
+    <link rel="stylesheet" href="../common/css/normalize.css"/>
+    <link href="../common/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../layer/skin/layer.css" rel="stylesheet">
+    <link rel="stylesheet" href="../fontello/css/fontello.css"/>
+    <link href="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+    <link href="css/index.css" rel="stylesheet">
+    <!--[if lte IE 9]>
+    <script src="../common/js/html5shiv.min.js"></script>
+    <script src="../common/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="togglesidenav"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></div>
+
+    <!-- Sidebar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar">
+            <!--<a href="#" id="togglesidenav"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>-->
+            <ul class="nav navbar-nav side-nav" id="sidenav">
+                <li style="width: 100%">
+                    <ul id="mapsearchmenu">
+                        <li>
+                            <div class="row container-fluid" id="search-top">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <div class="searchico"><span class="ficon icon-cinema"></span></div>
+                                    <span>影院</span>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <div class="searchico"><span class="ficon icon-home"></span></div>
+                                    <span>酒店</span>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <div class="searchico"><span class="ficon icon-food"></span></div>
+                                    <span>美食</span>
+                                </div>
+                            </div>
+                            <table class="table table-hover table-condensed text-center" id="searchtable">
+                                <tr class="active">
+                                    <th>出行</th>
+                                    <td>公交站</td>
+                                    <td>地铁站</td>
+                                    <td>加油站</td>
+                                    <td>停车场</td>
+                                </tr>
+                                <tr class="active">
+                                    <th>休闲</th>
+                                    <td>KTV</td>
+                                    <td>酒吧</td>
+                                    <td>购物</td>
+                                    <td>桌球</td>
+                                </tr>
+                                <tr class="active">
+                                    <th>服务</th>
+                                    <td>银行</td>
+                                    <td>超市</td>
+                                    <td>药店</td>
+                                    <td>ATM</td>
+                                </tr>
+                            </table>
+                            <div id="poidiv">
+                                <input type="text" class="form-control" placeholder="Search other POI" id="POItext">
+                                <a href="#" id="searchPOI"><span class="ficon icon-search"></span></a>
+                            </div>
+                        </li>
+                        <li id="locationbox">
+                            <div id="location"></div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../main/main.html">Find Movies</a>
+                </li>
+                <li class="active"><a  href="#"><span class="ficon icon-globe"></span>地图搜索</a></li>
+                <li><a href="../movies/movies.html"><span class="ficon icon-video"></span> 热映电影</a></li>
+                <li><a id="collect"><span class="ficon icon-heart"></span>我的收藏</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right navbar-user">
+                <li class="dropdown user-dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="ficon icon-user"></span><span id="fm_name"></span><b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-toggle="modal" data-target="#mapStyleModal"><span class="ficon icon-color-adjust"></span> 更换地图主题</a></li>
+                        <li class="divider"></li>
+                        <li><a id="logout"><span class="ficon icon-logout"></span> 退出登录</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right navbar-login">
+                <li><a data-toggle="modal" data-target="#loginModel"><span class="ficon icon-login"></span> 登录</a></li>
+                <li><a href="../register/register.html"><span class="ficon icon-user-plus"></span> 注册</a></li>
+            </ul>
+
+            <div class="navbar-form navbar-right" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search" id="address">
+                </div>
+                <button class="btn btn-primary" id="searchbtn">搜索</button>
+            </div>
+            <form class="navbar-form navbar-right" id="cityform">
+                <span id="cityname"></span>
+                <a class="btn btn-xs btn-info" data-toggle="modal" data-target="#cityModal">切换城市</a>
+            </form>
+
+        </div>
+    </nav>
+    <div id="page-wrapper">
+        <div id="allmap"></div>
+        <div class="PathInner" id="leftPathMenu">
+            <div class="PathMain">
+                <div class="leftTmain Tmain">
+                    <div class="rotate"><span class="cover"></span></div>
+                </div>
+            </div>
+            <div class="PathItem">
+                <a class="link" href="#" title="公交" data-toggle="modal" data-target="#busModal">
+                    <span class="item ficon icon-bus"></span>
+                </a>
+            </div>
+            <div class="PathItem">
+                <a class="link" href="#" title="驾车" data-toggle="modal" data-target="#carModal">
+                    <span class="item ficon icon-cab"></span>
+                </a>
+            </div>
+            <div class="PathItem">
+                <a class="link" href="#" title="打的" data-toggle="modal" data-target="#taxiModal">
+                    <span class="item ficon icon-taxi"></span>
+                </a>
+            </div>
+            <div class="PathItem">
+                <a class="link" href="#" title="步行" data-toggle="modal" data-target="#walkModal">
+                    <span class="item ficon icon-male"></span>
+                </a>
+            </div>
+        </div>
+        <div class="PathInner" id="rightPathMenu">
+            <div class="PathMain">
+                <div class="rightTmain Tmain">
+                    <div class="rotate"><span class="cover"></span></div>
+                </div>
+            </div>
+            <div class="PathItem">
+                <a class="link" href="#" title="圆选查询" id="circle">
+                    <span class="item ficon icon-plus-circled"></span>
+                </a>
+            </div>
+            <div class="PathItem">
+                <a class="link" href="#" title="距离量算" id="ruler">
+                    <span class="item ficon icon-ruler"></span>
+                </a>
+            </div>
+            <div class="PathItem">
+                <a class="link" href="#" title="全景图" id="panoramaCtrl">
+                    <span class="item ficon icon-camera"></span>
+                </a>
+            </div>
+            <div class="PathItem">
+                <a class="link" href="#" title="天气"  data-toggle="modal" data-target="#weatherModal">
+                    <span class="item ficon icon-cloud-sun"></span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<div class="modal  fade" id="cityModal" tabindex="-1" role="dialog" aria-labelledby="changecity" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">切换城市</h4>
+            </div>
+            <div class="modal-body">
+                <div class="title">城市列表</div>
+                <div class="cityList" id="citylist_container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal  fade" id="weatherModal" tabindex="-1" role="dialog" aria-labelledby="weather">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">天气小贴士</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3 col-xs-3 col-sm-3" id="weather-city"></div>
+                        <div class="col-md-5 col-xs-5 col-sm-5" id="weather-date"></div>
+                        <div class="col-md-4 col-xs-4 col-sm-4" id="weather-pm25"></div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table-hover table table-condensed text-center" id="weathertable">
+                                <tr class="info">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="warning">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="success">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="info">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="warning">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="success">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <table class="table-hover table text-center" id="clothes">
+                            <tr class="success">
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr class="success">
+                                <td colspan="2"></td>
+                            </tr>
+
+                        </table>
+                        <table class="table-hover table text-center" id="cold">
+                            <tr class="info">
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr class="info">
+                                <td colspan="2"></td>
+                            </tr>
+
+                        </table>
+                        <table class="table-hover table text-center" id="sport">
+                            <tr class="warning">
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr class="warning">
+                                <td colspan="2"></td>
+                            </tr>
+                        </table>
+                        <table class="table-hover table text-center" id="ray">
+                            <tr class="danger">
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr class="danger">
+                                <td colspan="2"></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">我知道啦~</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal route_modal fade" id="busModal" tabindex="-1" role="dialog" aria-labelledby="busPath" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">公交线路查询</h4>
+            </div>
+            <div class="modal-body">
+               <div class="startdiv">
+                   <label for="busstart">起点</label>
+                   <input type="text" class="form-control locationtext startinput" data-ac="ac_bs" id="busstart" name="busstart" placeholder="请输入起点"/>
+               </div>
+                <div class="enddiv">
+                    <label for="busend">终点</label>
+                    <input type="text" class="form-control locationtext endinput" data-ac="ac_be" id="busend" name="busend" placeholder="请输入终点"/>
+                </div>
+                <div class="buspolicydiv">
+                    <label class="radio-inline">
+                        <input type="radio" name="buspolicy" id="buspolicy1" value="0" checked="checked">最少时间
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="buspolicy" id="buspolicy2" value="1">最少换乘
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="buspolicy" id="buspolicy3" value="2">最少步行
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="buspolicy" id="buspolicy4" value="3">不乘地铁
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-success routesearchbtn" id="bussearch">查询</button>
+                <div id="busresult"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal route_modal fade" id="carModal" tabindex="-1" role="dialog" aria-labelledby="carPath" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">驾车线路查询</h4>
+            </div>
+            <div class="modal-body">
+                <div class="startdiv">
+                    <label for="carstart">起点</label>
+                    <input type="text" class="form-control locationtext startinput" data-ac="ac_cs" id="carstart" name="carstart" placeholder="请输入起点"/>
+                </div>
+                <div class="enddiv">
+                    <label for="carend">终点</label>
+                    <input type="text" class="form-control locationtext endinput" data-ac="ac_ce" id="carend" name="carend" placeholder="请输入终点"/>
+                </div>
+                <div class="carpolicydiv">
+                    <label class="radio-inline">
+                        <input type="radio" name="carpolicy" id="carpolicy1" value="0" checked="checked">最少时间
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="carpolicy" id="carpolicy2" value="1">最短距离
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="carpolicy" id="carpolicy3" value="2">避开高速
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-success routesearchbtn" id="carsearch" >查询</button>
+                <div id="carresult"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal route_modal fade" id="walkModal" tabindex="-1" role="dialog" aria-labelledby="walkPath" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">步行线路查询</h4>
+            </div>
+            <div class="modal-body">
+                <div class="startdiv">
+                    <label for="walkstart">起点</label>
+                    <input type="text" class="form-control locationtext startinput" data-ac="ac_ws" id="walkstart" name="walkstart" placeholder="请输入起点"/>
+                </div>
+                <div class="enddiv">
+                    <label for="walkend">终点</label>
+                    <input type="text" class="form-control locationtext endinput" data-ac="ac_we" id="walkend" name="walkend" placeholder="请输入终点"/>
+                </div>
+                <button type="submit" class="btn btn-success routesearchbtn" id="walksearch">查询</button>
+                <div id="walkresult"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal  route_modal fade" id="taxiModal" tabindex="-1" role="dialog" aria-labelledby="taxiPath" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">打车查询</h4>
+            </div>
+            <div class="modal-body">
+                <div class="startdiv">
+                    <label for="taxistart">起点</label>
+                    <input type="text" class="form-control locationtext startinput" data-ac="ac_ts" id="taxistart" name="taxistart" placeholder="请输入起点"/>
+                </div>
+                <div class="enddiv">
+                    <label for="taxiend">终点</label>
+                    <input type="text" class="form-control locationtext endinput" data-ac="ac_te" id="taxiend" name="taxiend" placeholder="请输入终点"/>
+                </div>
+                <button type="submit" class="btn btn-success routesearchbtn" id="taxisearch" >查询</button>
+                <div id="taxiresult" class="table-responsive">
+                    <table class="table table-hover table-bordered" id="taxitable">
+                        <tr class="info text-center">
+                            <td>起步价(元)</td>
+                            <td></td>
+                        </tr>
+                        <tr class="active text-center">
+                            <td>单价(元)</td>
+                            <td></td>
+                        </tr>
+                        <tr class="success text-center">
+                            <td>里程(米)</td>
+                            <td></td>
+                        </tr>
+                        <tr class="active text-center">
+                            <td>总费用(元)</td>
+                            <td></td>
+                        </tr>
+                        <tr class="danger text-center">
+                            <td>备注</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="mapStyleModal" tabindex="-1" role="dialog" aria-labelledby="mapStyle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">更换地图主题</h4>
+            </div>
+            <div class="modal-body container-fluid">
+                <div class="row">
+                    <div class="style col-md-3 col-sm-6 col-xs-6">
+                        <img src="img/mapstyle/normal.png" alt="normal"/><span>默认样式</span>
+                    </div>
+                    <div class="style col-md-3 col-sm-6 col-xs-6">
+                        <img src="img/mapstyle/dark.png" alt="dark"/><span>黑夜风格</span>
+                    </div>
+                    <div class="style col-md-3 col-sm-6 col-xs-6">
+                        <img src="img/mapstyle/darkgreen.png" alt="darkgreen"/><span>青春绿风格</span>
+                    </div>
+                    <div class="style col-md-3 col-sm-6 col-xs-6">
+                        <img src="img/mapstyle/googlelite.png" alt="googlelite"/><span>精简风格</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="style col-md-3 col-sm-6 col-xs-6">
+                        <img src="img/mapstyle/grassgreen.png" alt="grassgreen" /><span>自然绿风格</span>
+                    </div>
+                    <div class="style col-md-3 col-sm-6 col-xs-6">
+                        <img src="img/mapstyle/grayscale.png" alt="grayscale"/><span>高端灰风格</span>
+                    </div>
+                    <div class="style col-md-3 col-sm-6 col-xs-6">
+                        <img src="img/mapstyle/hardedge.png" alt="hardedge"/><span>强边界风格</span>
+                    </div>
+                    <div class="style col-md-3 col-sm-6 col-xs-6">
+                        <img src="img/mapstyle/light.png" alt="light"/><span>清新蓝风格</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="style col-md-3 col-sm-6 col-xs-6">
+                        <img src="img/mapstyle/bluish.png" alt="bluish"/><span>清新蓝绿风格</span>
+                    </div>
+                    <div class="style col-md-3 col-sm-6 col-xs-6">
+                        <img src="img/mapstyle/pink.png" alt="pink"/><span>浪漫粉风格</span>
+                    </div>
+                    <div class="style col-md-3 col-sm-6 col-xs-6">
+                        <img src="img/mapstyle/redalert.png" alt="redalert"/><span>红色警戒风格</span>
+                    </div>
+                    <div class="style col-md-3 col-sm-6 col-xs-6">
+                        <img src="img/mapstyle/midnight.png" alt="midnight"/><span>午夜蓝风格</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="loginModel" tabindex="-1" role="dialog" aria-labelledby="loginModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">用户登录</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control input-login" id="username" placeholder="Username" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control input-login" id="password" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-9">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="remember">7天内免登录
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="form-group">
+                        <div class="col-sm-offset-8 col-sm-4">
+                            <a id="login" class="btn btn-success">登录</a>
+                            <a class="btn btn-primary" href="../register/register.html" >注册</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=OzH20ZxCHP2Au64y1Csmk61K"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/CityList/1.2/src/CityList_min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+<script src="../common/js/jquery-1.11.3.min.js"></script>
+<!--[if lte IE 9]>
+<script src="../common/js/jquery.placeholder.min.js"></script>
+<script>
+    $(function () {
+        $('input, textarea').placeholder();
+    });
+</script>
+<![endif]-->
+<script src="../common/js/bootstrap.min.js"></script>
+<script src="../layer/layer.js"></script>
+<script src="../common/js/common.js"></script>
+<script src="js/lefttool.js"></script>
+<script src="js/righttool.js"></script>
+<script src="js/index.js"></script>
+
+</body>
+</html>

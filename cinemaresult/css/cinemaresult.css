@@ -1,0 +1,404 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: "Microsoft YaHei", sans-serif, "Helvetica Neue", Helvetica, Arial;
+    background-color: #ffffff;
+    position: relative;
+    height: 100%;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+/*loading start*/
+.loading {
+    position: absolute;
+    background-color: #dee1e2;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+}
+
+.loading img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -400px;
+}
+
+/*loading end*/
+
+/*topsearch start*/
+#topsearch {
+    width: 100%;
+    margin-top: -20px;
+    position: relative;
+    background-color: #f0f0f0;
+    z-index: 10;
+}
+
+/*topbar start*/
+.topbar {
+    height: 110px;
+    width: 100%;
+}
+
+.searchcon {
+    width: 60%;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.searchcon > .input-group {
+    padding: 5px;
+    border: 2px solid #cccccc;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    position: relative;
+    -webkit-box-shadow: inset 0 1px 5px #cccccc;
+    -moz-box-shadow: inset 0 1px 5px #cccccc;
+    box-shadow: inset 0 1px 5px #cccccc;
+    background-color: #ffffff;
+}
+
+.searchcon > .input-group .dropdown-menu {
+    min-width: 0;
+    margin-top: 5px;
+}
+
+.searchcon a, .searchcon input {
+    border: none;
+    outline: none;
+}
+
+.searchcon a:active, .searchcon a:visited {
+    border: none;
+    outline: none;
+}
+
+.searchcon input {
+    width: 100%;
+    padding: 5px;
+}
+
+.searchcon input:focus {
+    outline: none;
+}
+
+#search {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    font-size: 16px;
+}
+
+/*topbar end*/
+/*topsearch end*/
+
+/*resultdiv start*/
+.resultdiv {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/*resulttop start*/
+.resulttop {
+    border-bottom: 2px solid #cccccc;
+    border-left: 10px solid #e89e2d;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.resulttop span {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/*resulttop end*/
+
+/*resultcontainer start*/
+#panelproto {
+    display: none;
+}
+
+.panel {
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.cinemaname {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.resultcontainer .panel-heading .ficon {
+    float: right;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+
+
+.cinema_rating {
+    color: #de534a;
+}
+
+.movieshowcase {
+    font-size: 0;
+    margin: 10px auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+    height: 250px;
+    border-bottom: 1px solid #cccccc;
+
+}
+
+.leftcontrol {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    text-align: center;
+    width: 30px;
+    height: 60px;
+    margin-top: -30px;
+    line-height: 60px;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, .5);
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.leftcontrol:hover, .rightcontrol:hover {
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.rightcontrol {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    text-align: center;
+    width: 30px;
+    height: 60px;
+    margin-top: -30px;
+    line-height: 60px;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, .5);
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.moviebox {
+    width: 3000px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.moviebox img {
+    height: 200px;
+    width: 150px;
+}
+
+.moviebox img:hover {
+    opacity: .8;
+    filter: alpha(opacity=80);
+    /*border: 1px solid #0087fb;*/
+    /*-webkit-border-radius: 10px;*/
+    /*-moz-border-radius: 10px;*/
+    /*border-radius: 10px;*/
+}
+
+.movieposter {
+    height: 200px;
+    width: 150px;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+
+.movieinfo {
+    overflow: hidden;
+    _zoom: 1;
+    clear: both;
+    position: relative;
+}
+.infoloading {
+    position: absolute;
+    z-index: 3000;
+    display: none;
+    top: 50%;
+    left: 50%;
+    margin-top: -80px;
+    margin-left: -80px;
+}
+
+.movienamediv {
+    overflow: auto;
+    _height: 1%;
+    clear: both;
+    margin-bottom: 20px;
+}
+
+.movielengthdiv {
+    color: #fe5b8f;
+}
+
+.movienationdiv {
+    color: #3285fb;
+}
+
+.movietypediv {
+    color: #f7c627;
+}
+
+.movieinfotop {
+    overflow: auto;
+    _height: 1%;
+    clear: both;
+}
+
+.moviescore {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background-color: #01b159;
+    color: #ffffff;
+    text-align: center;
+    line-height: 50px;
+}
+
+.moviereleasedate {
+    font-size: 0.5em;
+    margin-left: 20px;
+}
+
+.movietable {
+    margin: 20px auto;
+    clear: both;
+}
+
+.movietable td:first-child {
+    width: 100px;
+}
+
+.activemovie, .activemovie img {
+    width: 170px;
+    height: 240px;
+    /*border: 2px solid #01b159;*/
+    -webkit-box-shadow: 2px 2px 5px #cccccc;
+    -moz-box-shadow: 2px 2px 5px #cccccc;
+    box-shadow: 2px 2px 5px #cccccc;
+}
+.comment_badge{
+    margin: 10px 0
+}
+
+.comment_con .list-group{
+    margin: 0;
+}
+.comment_list .list-group-item{
+    overflow: auto;
+    _height: 1%;
+    clear: both;
+}
+.comment_date{
+    float: right;
+    font-size: 12px;
+}
+.comment_con nav{
+    text-align: center
+}
+.love_cinema{
+    color: #ff334e;
+}
+/*resultcontainer end*/
+
+/*pagerdiv start*/
+.pager > li {
+    cursor: pointer;
+}
+
+/*footer start*/
+footer{
+    background-color: #101010;
+    color: #ffffff;
+    position: relative;
+    font-family: cursive,"Microsoft YaHei", sans-serif,"Helvetica Neue",Helvetica,Arial;
+    text-align: center;
+}
+.footerdiv{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.footerdiv ul{
+    padding-left: 0;
+}
+
+.contact li{
+    display: inline-block;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    margin: 10px;
+}
+.contact li a{
+    display: block;
+    width: 40px;
+    height: 40px;
+    -webkit-border-radius: 50% ;
+    -moz-border-radius:  50%;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    line-height: 50px\9;
+    *line-height: 40px;
+    _line-height: 40px;
+
+}
+.contact .ficon{
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    color: #4296ff;
+    font-size: 20px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.contact li:hover .ficon{
+    background-color: #4296ff;
+    color: #ffffff;
+}
+.erweima{
+    position: absolute;
+    display: none;
+    top: 50px;
+    right: 100px;
+}
+.erweimaimg{
+    width: 100px;
+    height: 100px;
+}
+/*footer end*/

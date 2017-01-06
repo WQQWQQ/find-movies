@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+  <meta name="description" content="Find movie是集影院搜索、电影资讯、发表影评于一体的网站，带给你最好的体验">
+  <meta name="author" content="Quincy Wu">
+  <title>Dashboard - SB Admin</title>
+  <link href="../common/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../fontello/css/fontello.css"/>
+  <link href="css/movieresult.css" rel="stylesheet">
+
+  <!--[if lte IE 9]>
+  <script src="../common/js/html5shiv.min.js"></script>
+  <script src="../common/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+<div class="loading">
+  <img src="../common/img/loading4.gif" alt=""/>
+</div>
+<div id="wrapper">
+  <nav class=" navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../main/main.html">Find Movies</a>
+      </div>
+
+      <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar">
+        <ul class="nav navbar-nav">
+          <li><a href="../admin/index.html"><span class="ficon icon-globe"></span>地图搜索</a></li>
+          <li><a href="../movies/movies.html"><span class="ficon icon-video"></span>热映电影</a></li>
+          <li><a id="collect"><span class="ficon icon-heart"></span>我的收藏</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right navbar-user">
+          <li class="dropdown user-dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="ficon icon-user"></span> <span id="fm_name"></span><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a id="logout"><span class="ficon icon-logout"></span> 退出登录</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right navbar-login">
+          <li><a data-toggle="modal" data-target="#loginModel"><span class="ficon icon-login"></span> 登录</a></li>
+          <li><a href="../register/register.html"><span class="ficon icon-user-plus"></span> 注册</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="topsearch">
+    <div class="topbar container">
+      <div class="searchcon">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="currentitem">电影 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li id="movieitem"><a>电影</a></li>
+              <li id="cinemaitem"><a>影院</a></li>
+            </ul>
+          </div>
+          <input type="text" placeholder="电影名称" id="searchtext"/>
+          <a id="search"><span class="ficon icon-search"></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="resultdiv">
+    <div class="resulttop container">
+      <h2 class="col-md-12"><span></span>的搜索结果</h2>
+    </div>
+    <div class="resultcontainer container">
+      <div class="panel panel-success" id="panelproto">
+        <span class="hide c_id"></span>
+        <div class="panel-heading">
+          <span class="cinemaname"></span>
+          <span class="ficon icon-star c_collect" title="收藏此影院"></span>
+        </div>
+        <div class="panel-body">
+          <div class="addressdiv col-md-6">
+            <span class="ficon icon-address"></span>地址：<span class="cinema_address"></span>
+          </div>
+          <div class="teldiv col-md-4">
+            <span class="ficon icon-phone"></span>电话：<span class="cinema_tel"></span>
+          </div>
+          <div class="ratediv col-md-2">
+            <span class="ficon icon-thumbs-up"></span>评级：<span class="cinema_rating"></span>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover timetable table-bordered table-striped">
+            <caption>排片时间表</caption>
+            <tr class="text-center moviedate warning"></tr>
+            <tr class="text-center movietime"></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="container pagerdiv">
+      <nav>
+        <ul class="pager">
+          <li id="firstpage"><a>首页</a></li>
+          <li id="previous"><a>上一页</a></li>
+          <li id="next"><a>下一页</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <footer class="container-fluid">
+    <div class="row">
+      <div class="footerdiv col-md-3 col-md-offset-1">
+        <h4>关于</h4>
+        <p>Find Movie是一个专注于影院搜索和影讯更新，服务于大众的平台。</p>
+      </div>
+      <div class="footerdiv col-md-2 col-md-offset-1">
+        <h4>友情链接</h4>
+        <ul>
+          <li><a href="http://www.mtime.com/" rel="prefetch prerender">时光网</a></li>
+          <li><a href="http://www.siteinspire.com/" rel="prefetch prerender">siteInspire</a></li>
+          <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+          <li><a href="http://jquery.com/">JQuery</a></li>
+          <li><a href="http://developer.baidu.com/map/index.php?title=%E9%A6%96%E9%A1%B5">百度地图API</a></li>
+        </ul>
+      </div>
+      <div class="footerdiv col-md-4 col-md-offset-1">
+        <h4>联系我</h4>
+        <ul class="contact">
+          <li><a href="http://weibo.com/3100732047/profile?topnav=1&wvr=6" class="weibo"><span class="ficon icon-weibo"></span></a></li>
+          <li><a id="weixin"><span class="ficon icon-wechat"></span></a></li>
+          <li><a id="qq"><span class="ficon icon-qq"></span></a></li>
+          <li><a id="fb"><span class="ficon icon-facebook"></span></a></li>
+          <li><a id="twitter"><span class="ficon icon-twitter"></span></a></li>
+        </ul>
+        <div class="weixinwer erweima" id="weixiner"><img src="../common/img/weixiner.jpg" class="erweimaimg"></div>
+        <div class="qqer erweima" id="qqer"><img src="../common/img/qqer.jpg" class="erweimaimg"></div>
+      </div>
+    </div>
+  </footer>
+</div>
+<!-- /#wrapper -->
+<div class="modal fade" id="loginModel" tabindex="-1" role="dialog" aria-labelledby="loginModel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">用户登录</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="username" class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control input-login" id="username" placeholder="Username" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control input-login" id="password" placeholder="Password" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-9">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="remember">7天内免登录
+                </label>
+              </div>
+            </div>
+          </div>
+          <hr/>
+          <div class="form-group">
+            <div class="col-sm-offset-8 col-sm-4">
+              <a id="login" class="btn btn-success">登录</a>
+              <a class="btn btn-primary" href="../register/register.html" >注册</a>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script src="../common/js/jquery-1.11.3.min.js"></script>
+<script src="../common/js/bootstrap.min.js"></script>
+<!--[if lte IE 9]>
+<script src="../common/js/jquery.placeholder.min.js"></script>
+<script>
+  $(function () {
+    $('input, textarea').placeholder();
+  });
+</script>
+<![endif]-->
+<script src="../layer/layer.js"></script>
+<script src="../common/js/common.js"></script>
+<script src="js/movieresult.js"></script>
+
+</body>
+</html>

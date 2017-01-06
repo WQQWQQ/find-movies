@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="description" content="Find movie是集影院搜索、电影资讯、发表影评于一体的网站，带给你最好的体验">
+    <meta name="author" content="Quincy Wu">
+    <title>Dashboard - SB Admin</title>
+    <link href="../common/css/normalize.css" rel="stylesheet">
+    <link href="../common/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../layer/skin/layer.css" rel="stylesheet">
+    <link rel="stylesheet" href="../fontello/css/fontello.css"/>
+    <link href="css/register.css" rel="stylesheet">
+    <!--[if lte IE 9]>
+    <script src="../common/js/html5shiv.min.js"></script>
+    <script src="../common/js/respond.min.js"></script>
+    <script src="../common/js/jquery.placeholder.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div id="wrapper">
+    <nav class=" navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../main/main.html">Find Movies</a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="../admin/index.html"><span class="ficon icon-globe"></span>地图搜索</a></li>
+                    <li><a href="../movies/movies.html"><span class="ficon icon-video"></span>热映电影</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="main container">
+        <div class="mainform">
+            <ul class="formlist">
+                <li><label>用户名：</label><input type="text" name="username" class="form-control" id="nickname" placeholder="请输入用户名" required></li>
+                <li><label>邮箱：</label><input type="email" name="email" class="form-control" id="email" required placeholder="请输入邮箱"></li>
+                <li><label>密码：</label><input type="password" name="password" class="form-control" id="passwords" placeholder="请输入密码" required></li>
+                <li><label>确认密码：</label><input type="password" class="form-control" id="confirm" placeholder="请确认密码" required></li>
+            </ul>
+           <div>
+               <a class="btn btn-primary" id="register">注册</a>
+           </div>
+        </div>
+    </div>
+
+
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="footerdiv col-md-3 col-md-offset-1">
+                <h4>关于</h4>
+                <p>Find Movie是一个专注于影院搜索和影讯更新，服务于大众的平台。</p>
+            </div>
+            <div class="footerdiv col-md-2 col-md-offset-1">
+                <h4>友情链接</h4>
+                <ul>
+                    <li><a href="http://www.mtime.com/" rel="prefetch prerender">时光网</a></li>
+                    <li><a href="http://www.siteinspire.com/" rel="prefetch prerender">siteInspire</a></li>
+                    <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+                    <li><a href="http://jquery.com/">JQuery</a></li>
+                    <li><a href="http://developer.baidu.com/map/index.php?title=%E9%A6%96%E9%A1%B5">百度地图API</a></li>
+                </ul>
+            </div>
+            <div class="footerdiv col-md-4 col-md-offset-1">
+                <h4>联系我</h4>
+                <ul class="contact">
+                    <li><a href="http://weibo.com/3100732047/profile?topnav=1&wvr=6" class="weibo"><span class="ficon icon-weibo"></span></a></li>
+                    <li><a id="weixin"><span class="ficon icon-wechat"></span></a></li>
+                    <li><a id="qq"><span class="ficon icon-qq"></span></a></li>
+                    <li><a id="fb"><span class="ficon icon-facebook"></span></a></li>
+                    <li><a id="twitter"><span class="ficon icon-twitter"></span></a></li>
+                </ul>
+                <div class="weixinwer erweima" id="weixiner"><img src="../common/img/weixiner.jpg" class="erweimaimg"></div>
+                <div class="qqer erweima" id="qqer"><img src="../common/img/qqer.jpg" class="erweimaimg"></div>
+            </div>
+        </div>
+    </footer>
+</div>
+<!-- /#wrapper -->
+
+
+
+<script src="../common/js/jquery-1.11.3.min.js"></script>
+<script src="../common/js/bootstrap.min.js"></script>
+<script src="../layer/layer.js"></script>
+<!--[if lte IE 9]>
+<script src="../common/js/jquery.placeholder.min.js"></script>
+<script>
+    $(function () {
+        $('input, textarea').placeholder();
+    });
+</script>
+<![endif]-->
+<script src="../common/js/common.js"></script>
+<script src="js/register.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "findmovies",
+  "version": "1.0.0",
+  "description": "Find Movie是一个专注于影院搜索和影讯更新，服务于大众的平台。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "电影，影院"
+  ],
+  "author": "Quincy Wu",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-uglify": "^1.5.3"
+  }
+}
